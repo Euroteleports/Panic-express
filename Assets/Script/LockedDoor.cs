@@ -8,6 +8,12 @@ public class LockedDoor : MonoBehaviour
     public GameObject doorModel; 
 
     private bool isPlayerNear = false;
+    private AudioSource Audiosource;
+
+    void Start()
+    {
+        Audiosource = GetComponent<AudioSource>();
+    }
 
     // Détection du joueur
     void OnTriggerEnter(Collider other)
@@ -35,6 +41,10 @@ public class LockedDoor : MonoBehaviour
                 
                 // On désactive ce trigger pour ne plus pouvoir interagir dans le vide
                 gameObject.SetActive(false); 
+                 if (!Audiosource.isPlaying)
+        {
+            Audiosource.Play();
+        }
             }
             else
             {
