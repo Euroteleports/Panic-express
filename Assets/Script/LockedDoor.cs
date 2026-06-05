@@ -40,11 +40,12 @@ public class LockedDoor : MonoBehaviour
                 doorModel.SetActive(false);
                 
                 // On désactive ce trigger pour ne plus pouvoir interagir dans le vide
-                gameObject.SetActive(false); 
-                 if (!Audiosource.isPlaying)
+               // gameObject.SetActive(false); 
+               if (!Audiosource.isPlaying)
         {
             Audiosource.Play();
         }
+                 
             }
             else
             {

@@ -8,6 +8,13 @@ public class CrowbarItem : MonoBehaviour
     public GameObject currentCCTVCamera; 
     public GameObject minigameCamera; 
     public GameObject armMinigameRoot; 
+    private AudioSource Audiosource;
+    public GameObject Crowbar;
+
+    void Start()
+    {
+        Audiosource = GetComponent<AudioSource>();
+    }
 
     // Ta variable statique globale
     public static bool hasCrowbar = false; 
@@ -21,6 +28,7 @@ public class CrowbarItem : MonoBehaviour
             hasCrowbar = true; // L'inventaire est mis à jour !
             Debug.Log("Pied de biche récupéré !");
 
+
             // On ferme le mini-jeu
             minigameCamera.SetActive(false);
             armMinigameRoot.SetActive(false);
@@ -30,7 +38,20 @@ public class CrowbarItem : MonoBehaviour
             playerController.enabled = true;
 
             // On détruit l'objet physique
-            Destroy(gameObject);
-        }
+            //Destroy(gameObject);
+            Crowbar.SetActive(false);
+            
+            if (!Audiosource.isPlaying)
+          {
+            Debug.Log("ca passe ici");
+            Audiosource.Play();
+          }
+        
+          else{
+          
+                Audiosource.Stop();
+              }
+           
     }
+}
 }
