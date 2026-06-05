@@ -41,16 +41,8 @@ public class CrowbarItem : MonoBehaviour
             //Destroy(gameObject);
             Crowbar.SetActive(false);
             
-            if (!Audiosource.isPlaying)
-          {
             Audiosource.Play();
-          }
-        
-          else{
-          
-                Audiosource.Stop();
-              }
-           
+         
     }
 }
 }

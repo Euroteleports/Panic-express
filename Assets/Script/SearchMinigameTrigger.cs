@@ -35,7 +35,7 @@ public class SearchMinigameTrigger : MonoBehaviour
             
             if (Input.GetKeyDown(KeyCode.Space))
             {
-             
+             //moment où l'on active la camréca (celle qui filme la main) et qu'on active le bras
                 playerController.enabled = false; 
                 currentCCTVCamera.SetActive(false);
                 minigameCamera.SetActive(true);

@@ -37,17 +37,8 @@ public class FinalKey : MonoBehaviour
             Destroy(clef);
 
             // Son de clef
-             if (!Audiosource.isPlaying)
-             {
-                Audiosource.Play();
-             }
-        
-             else
-              {
-          
-                Audiosource.Stop();
-              }
-            
+             Audiosource.Play();
+             
             //Temps d'attende avant l'autodestruction
             StartCoroutine(Autodestruction());
             
@@ -58,6 +49,7 @@ public class FinalKey : MonoBehaviour
 
     IEnumerator Autodestruction()
     {
+        //Commande pour créer un délais
         yield return new WaitForSeconds(10f);
         //Destruction du collider
         collider.SetActive(false);
