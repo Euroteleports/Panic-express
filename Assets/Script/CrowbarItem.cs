@@ -43,7 +43,6 @@ public class CrowbarItem : MonoBehaviour
             
             if (!Audiosource.isPlaying)
           {
-            Debug.Log("ca passe ici");
             Audiosource.Play();
           }
         

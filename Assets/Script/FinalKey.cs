@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class FinalKey : MonoBehaviour
 {
-   // Notre variable magique accessible de partout
     public static bool hasFinalKey = false; 
-    
-    [Tooltip("La porte qui doit disparaître quand on prend la clef")]
     public GameObject doorToOpen; 
     public GameObject doorToOpens; 
     public GameObject clef;
     private AudioSource Audiosource;
-    private GameObject collider;
+    public GameObject collider;
 
     void Start()
     {
         Audiosource = GetComponent<AudioSource>();
-        collider = GetComponent<GameObject>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -33,14 +29,16 @@ public class FinalKey : MonoBehaviour
                 doorToOpen.SetActive(false);
             }
 
-            // On détruit la clef de la scène
-            Destroy(gameObject);
-            Destroy(gameObject);
+            //Detrction des objets qui bloque le chemin
+           doorToOpen.SetActive(false);
+           doorToOpens.SetActive(false);
+
+            //Destrcution de la clef
             Destroy(clef);
 
+            // Son de clef
              if (!Audiosource.isPlaying)
              {
-               Debug.Log("ca passe ici");
                 Audiosource.Play();
              }
         
@@ -50,15 +48,19 @@ public class FinalKey : MonoBehaviour
                 Audiosource.Stop();
               }
             
+            //Temps d'attende avant l'autodestruction
             StartCoroutine(Autodestruction());
-            Destroy(collider);
+            
+            
+            
         }
     }
 
     IEnumerator Autodestruction()
     {
         yield return new WaitForSeconds(10f);
-
-        yield return null;
+        //Destruction du collider
+        collider.SetActive(false);
+        
     }
 }
