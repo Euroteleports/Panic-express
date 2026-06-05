@@ -10,6 +10,15 @@ public class FinalKey : MonoBehaviour
     [Tooltip("La porte qui doit disparaître quand on prend la clef")]
     public GameObject doorToOpen; 
     public GameObject doorToOpens; 
+    public GameObject clef;
+    private AudioSource Audiosource;
+    private GameObject collider;
+
+    void Start()
+    {
+        Audiosource = GetComponent<AudioSource>();
+        collider = GetComponent<GameObject>();
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -27,6 +36,29 @@ public class FinalKey : MonoBehaviour
             // On détruit la clef de la scène
             Destroy(gameObject);
             Destroy(gameObject);
+            Destroy(clef);
+
+             if (!Audiosource.isPlaying)
+             {
+               Debug.Log("ca passe ici");
+                Audiosource.Play();
+             }
+        
+             else
+              {
+          
+                Audiosource.Stop();
+              }
+            
+            StartCoroutine(Autodestruction());
+            Destroy(collider);
         }
+    }
+
+    IEnumerator Autodestruction()
+    {
+        yield return new WaitForSeconds(10f);
+
+        yield return null;
     }
 }
