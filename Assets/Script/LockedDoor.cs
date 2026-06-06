@@ -9,6 +9,7 @@ public class LockedDoor : MonoBehaviour
 
     private bool isPlayerNear = false;
     private AudioSource Audiosource;
+    public GameObject Colliders;
 
     void Start()
     {
@@ -41,17 +42,17 @@ public class LockedDoor : MonoBehaviour
                 
                 // On désactive ce trigger pour ne plus pouvoir interagir dans le vide
                // gameObject.SetActive(false); 
-               if (!Audiosource.isPlaying)
-        {
-            Audiosource.Play();
-        }
+            
+                Audiosource.Play();
+        
                  
-            }
-            else
-            {
-                // Feedback pour le joueur s'il n'a pas encore l'objet
-                Debug.Log("La porte est bloquée. Il y a des planches à arracher...");
-            }
         }
+    }
+}
+
+IEnumerator Delais()
+    {
+      yield return new WaitForSeconds(3f);
+      Colliders.SetActive(false);
     }
 }

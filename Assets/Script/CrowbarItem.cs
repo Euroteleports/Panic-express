@@ -10,6 +10,7 @@ public class CrowbarItem : MonoBehaviour
     public GameObject armMinigameRoot; 
     private AudioSource Audiosource;
     public GameObject Crowbar;
+    public GameObject Colliders;
 
     void Start()
     {
@@ -52,7 +53,13 @@ public class CrowbarItem : MonoBehaviour
             Crowbar.SetActive(false);
             
             Audiosource.Play();
-         
+            StartCoroutine(Delais());
         }
+    }
+
+    IEnumerator Delais()
+    {
+      yield return new WaitForSeconds(3f);
+      Colliders.SetActive(false);
     }
 }
