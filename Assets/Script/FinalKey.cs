@@ -10,6 +10,7 @@ public class FinalKey : MonoBehaviour
     public GameObject clef;
     private AudioSource Audiosource;
     public GameObject collider;
+    private bool Booestla = false;
 
     void Start()
     {
@@ -18,7 +19,24 @@ public class FinalKey : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+      if(other.CompareTag("Player"))
+      {
+        Booestla = true;
+      }   
+    }
+        
+    void OnTriggerExit(Collider other)
+    {
+      if(other.CompareTag("Player"))
+      {
+        Booestla = false;
+      }   
+    }
+        
+        
+    void Update()
+    {
+        if (Booestla == true && Input.GetKeyDown(KeyCode.Space))
         {
             hasFinalKey = true;
             Debug.Log("Clef finale récupérée !");
@@ -46,6 +64,7 @@ public class FinalKey : MonoBehaviour
             
         }
     }
+    
 
     IEnumerator Autodestruction()
     {

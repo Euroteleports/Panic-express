@@ -20,10 +20,20 @@ public class CrowbarItem : MonoBehaviour
     public static bool hasCrowbar = false; 
     private bool isPlayerNear = false;
 
-    void OnTriggerEnter(Collider other)
+        void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Hand")) isPlayerNear = true;
+    }
+
+     void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Hand")) isPlayerNear = false;
+    }
+
+    void Update()
     {
         // On vérifie que c'est bien la main qui touche
-        if (other.CompareTag("Hand"))
+        if (/*other.CompareTag("Hand") &&*/ Input.GetKeyDown(KeyCode.Space) && isPlayerNear == true)
         {
             hasCrowbar = true; // L'inventaire est mis à jour !
             Debug.Log("Pied de biche récupéré !");
@@ -43,6 +53,6 @@ public class CrowbarItem : MonoBehaviour
             
             Audiosource.Play();
          
+        }
     }
-}
 }
