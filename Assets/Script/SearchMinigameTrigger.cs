@@ -8,6 +8,7 @@ public class SearchMinigameTrigger : MonoBehaviour
     public GameObject currentCCTVCamera;
     public GameObject minigameCamera;
     public GameObject armMinigameRoot;
+    public AudioSource Audiosource;
 
     private bool isPlayerNear = false;
 
@@ -41,6 +42,7 @@ public class SearchMinigameTrigger : MonoBehaviour
                 minigameCamera.SetActive(true);
                 armMinigameRoot.SetActive(true);
                 gameObject.SetActive(false);
+                Audiosource.enabled = false;
             }
         }
     }

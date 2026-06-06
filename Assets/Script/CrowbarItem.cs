@@ -11,6 +11,7 @@ public class CrowbarItem : MonoBehaviour
     private AudioSource Audiosource;
     public GameObject Crowbar;
     public GameObject Colliders;
+    public AudioSource Audiosources;
 
     void Start()
     {
@@ -47,6 +48,7 @@ public class CrowbarItem : MonoBehaviour
             // On libère le joueur
             currentCCTVCamera.SetActive(true);
             playerController.enabled = true;
+            Audiosources.enabled = true;
 
             // On détruit l'objet physique
             //Destroy(gameObject);
