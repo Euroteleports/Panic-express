@@ -7,14 +7,12 @@ public class Raycast : MonoBehaviour
 private Ray _ray;
     private RaycastHit _hit;
     public Transform Cam;
-    public bool estVu = false;
-
-    // VARIABLE POUR STOCKER LA HAUTEUR INITIALE
+    private bool estVu = false;
     private float _hauteurInitiale;
 
     void Start()
     {
-        // Au lancement du jeu, on mémorise la vraie hauteur de ta caméra
+        //On memorise la hauteur de la camera
         if (Cam != null)
         {
             _hauteurInitiale = Cam.transform.position.y;
@@ -24,6 +22,7 @@ private Ray _ray;
     void Update()
     {
         _ray = new Ray(transform.position, transform.forward);
+        //Trace le rayon 
         Debug.DrawRay(_ray.origin, _ray.direction * 100f, Color.red);
         
         if (Physics.Raycast(_ray, out _hit, 100f))
@@ -42,16 +41,14 @@ private Ray _ray;
             estVu = false;
         }
 
-        // --- DEPLACEMENT ---
         Vector3 nouvellePos = Cam.transform.position;
 
         if (estVu)
         {
-            nouvellePos.y = 4f; // La hauteur quand elle se baisse
+            nouvellePos.y = 4f;
         } 
         else 
         {
-            // Au lieu d'un chiffre fixe, on lui redonne sa VRAIE hauteur de départ
             nouvellePos.y = _hauteurInitiale; 
         }
 
