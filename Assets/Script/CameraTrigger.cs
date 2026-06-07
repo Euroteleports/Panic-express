@@ -20,19 +20,19 @@ public class CameraTrigger : MonoBehaviour
                 cam.SetActive(false);
             }
 
-           if (cameraToActivate == CamExt)
+           /*if (cameraToActivate == CamExt)
         {
             // On ne fait la transition QUE si on va vers l'extérieur
             cc.enabled = false;
-            StartCoroutine(Transition());
+           // StartCoroutine(Transition());
             Debug.Log("oui");
-        }
+        }*/
             // On allume uniquement la caméra liée à cette zone
             cameraToActivate.SetActive(true);
             
             
         }
-    }
+    }/*
         // cc.enabled = false;
        //     StartCoroutine(Transition());
     IEnumerator Transition()
@@ -46,5 +46,7 @@ public class CameraTrigger : MonoBehaviour
 
         //remttre le Character COntroller
         //cc.enabled = true;
+    }*/
     }
-}
+
+
