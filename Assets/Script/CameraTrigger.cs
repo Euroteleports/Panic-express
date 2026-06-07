@@ -5,6 +5,8 @@ using UnityEngine;
 public class CameraTrigger : MonoBehaviour
 {
     public GameObject cameraToActivate;
+    public CharacterController cc;
+    public GameObject CamExt;
 
     void OnTriggerEnter(Collider other)
     {
@@ -17,9 +19,32 @@ public class CameraTrigger : MonoBehaviour
             {
                 cam.SetActive(false);
             }
-            
+
+           if (cameraToActivate == CamExt)
+        {
+            // On ne fait la transition QUE si on va vers l'extérieur
+            cc.enabled = false;
+            StartCoroutine(Transition());
+            Debug.Log("oui");
+        }
             // On allume uniquement la caméra liée à cette zone
             cameraToActivate.SetActive(true);
+            
+            
         }
+    }
+        // cc.enabled = false;
+       //     StartCoroutine(Transition());
+    IEnumerator Transition()
+    {
+        
+        //Mettre fon noird
+        
+        yield return new WaitForSeconds(2f);
+        
+        //Mettre son de pas
+
+        //remttre le Character COntroller
+        //cc.enabled = true;
     }
 }
