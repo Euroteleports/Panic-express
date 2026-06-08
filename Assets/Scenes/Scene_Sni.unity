@@ -7129,6 +7129,7 @@ MonoBehaviour:
   currentCCTVCamera: {fileID: 336044604}
   minigameCamera: {fileID: 738345122}
   armMinigameRoot: {fileID: 919132148769923117}
+  Audiosource: {fileID: 0}
 --- !u!1 &642657252 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 01c10d47f82abaa43bc8e3620ac00f61, type: 3}
@@ -7198,6 +7199,9 @@ MonoBehaviour:
   currentCCTVCamera: {fileID: 336044604}
   minigameCamera: {fileID: 738345122}
   armMinigameRoot: {fileID: 1991133066}
+  Crowbar: {fileID: 0}
+  Colliders: {fileID: 0}
+  Audiosources: {fileID: 0}
 --- !u!1001 &644536996
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8369,6 +8373,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraToActivate: {fileID: 2130359522}
+  cc: {fileID: 0}
+  CamExt: {fileID: 0}
 --- !u!65 &720958583
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9136,6 +9142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorModel: {fileID: 7357708647759499251}
+  Colliders: {fileID: 0}
 --- !u!65 &781176073
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10971,32 +10978,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1294633178}
   rotationSpeed: 1.5
---- !u!1 &973956885 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d867727e67b724d42bfb7b824c6c7300, type: 3}
-  m_PrefabInstance: {fileID: 1262068411}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &973956887
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 973956885}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &989508589
 GameObject:
   m_ObjectHideFlags: 0
@@ -11043,6 +11024,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraToActivate: {fileID: 2130359522}
+  cc: {fileID: 0}
+  CamExt: {fileID: 0}
 --- !u!65 &989508592
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11574,6 +11557,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraToActivate: {fileID: 963194225}
+  cc: {fileID: 0}
+  CamExt: {fileID: 0}
 --- !u!65 &1061722319
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11782,6 +11767,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraToActivate: {fileID: 963194225}
+  cc: {fileID: 0}
+  CamExt: {fileID: 0}
 --- !u!65 &1087499374
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14054,66 +14041,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1258933381}
   m_Mesh: {fileID: 884331592079063297, guid: 9b043b8f9ae047b44bffda4600cf81ca, type: 3}
---- !u!1001 &1262068411
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: d867727e67b724d42bfb7b824c6c7300, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 6.28
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d867727e67b724d42bfb7b824c6c7300, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.019999504
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d867727e67b724d42bfb7b824c6c7300, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3.71
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d867727e67b724d42bfb7b824c6c7300, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d867727e67b724d42bfb7b824c6c7300, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d867727e67b724d42bfb7b824c6c7300, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d867727e67b724d42bfb7b824c6c7300, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d867727e67b724d42bfb7b824c6c7300, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d867727e67b724d42bfb7b824c6c7300, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d867727e67b724d42bfb7b824c6c7300, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: d867727e67b724d42bfb7b824c6c7300, type: 3}
-      propertyPath: m_Name
-      value: Walking
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d867727e67b724d42bfb7b824c6c7300, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 973956887}
-  m_SourcePrefab: {fileID: 100100000, guid: d867727e67b724d42bfb7b824c6c7300, type: 3}
 --- !u!4 &1278088884 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b09a95316cf033e4c824d6229e0e48ba, type: 3}
@@ -14437,6 +14364,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   rotationSpeed: 150
+  animator: {fileID: 0}
 --- !u!143 &1294633180
 CharacterController:
   m_ObjectHideFlags: 0
@@ -14667,6 +14595,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraToActivate: {fileID: 336044604}
+  cc: {fileID: 0}
+  CamExt: {fileID: 0}
 --- !u!65 &1337480837
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17375,6 +17305,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorToOpen: {fileID: 1668320420069890047}
   doorToOpens: {fileID: 2942450643417072519}
+  clef: {fileID: 0}
+  collider: {fileID: 0}
 --- !u!1 &1647020140
 GameObject:
   m_ObjectHideFlags: 0
@@ -20647,6 +20579,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraToActivate: {fileID: 1149406719}
+  cc: {fileID: 0}
+  CamExt: {fileID: 0}
 --- !u!65 &1930169267
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21576,6 +21510,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraToActivate: {fileID: 336044604}
+  cc: {fileID: 0}
+  CamExt: {fileID: 0}
 --- !u!65 &2045272018
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30147,6 +30083,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraToActivate: {fileID: 1008814484}
+  cc: {fileID: 0}
+  CamExt: {fileID: 0}
 --- !u!65 &7016348724424803448
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32929,4 +32867,3 @@ SceneRoots:
   - {fileID: 336044605}
   - {fileID: 782628376}
   - {fileID: 813590326}
-  - {fileID: 1262068411}
