@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TankController : MonoBehaviour
 {
-    public float moveSpeed = 4f;
-    public float rotationSpeed = 150f;
+    public float moveSpeed;
+    public float rotationSpeed;
     private CharacterController controller;
 
     private AudioSource audioSource;
@@ -55,6 +55,7 @@ public class TankController : MonoBehaviour
            
             if (animator != null)
             {
+                animator.speed = 1.5f;
                 animator.SetBool(walking, true);
             }
 

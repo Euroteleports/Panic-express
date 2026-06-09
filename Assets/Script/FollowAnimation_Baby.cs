@@ -25,17 +25,16 @@ public class FollowAnimation_Baby : MonoBehaviour
 
         if (ChestTransform != null)
         {
-            Debug.Log("Bone trouvable !");
+            //Debug.Log("Bone trouvable !");
 
             if (isWalking)
             {
-                Debug.Log("test !");
-                
+                //Debug.Log("test !");
             }
         }
         else
         {
-            Debug.Log("Bone introuvable !");
+            //Debug.Log("Bone introuvable !");
         }
     }
 }
