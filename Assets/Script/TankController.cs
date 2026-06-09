@@ -55,7 +55,7 @@ public class TankController : MonoBehaviour
            
             if (animator != null)
             {
-                animator.speed = 1.5f;
+                animator.speed = -1.5f;
                 animator.SetBool(walking, true);
             }
 
