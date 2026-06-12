@@ -6,7 +6,7 @@ public class FinalKey : MonoBehaviour
 {
     public static bool hasFinalKey = false; 
     public GameObject doorToOpen; 
-    public GameObject doorToOpens; 
+    public GameObject ColliderFin; 
     public GameObject clef;
     private AudioSource Audiosource;
     public GameObject collider;
@@ -47,9 +47,11 @@ public class FinalKey : MonoBehaviour
                 doorToOpen.SetActive(false);
             }
 
-            //Detrction des objets qui bloque le chemin
-           doorToOpen.SetActive(false);
-           doorToOpens.SetActive(false);
+            //Destruction des objets qui bloque le chemin
+            doorToOpen.SetActive(false);
+
+            //Activation du collider de fin
+            ColliderFin.SetActive(true);
 
             //Destrcution de la clef
             Destroy(clef);
