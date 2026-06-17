@@ -10,10 +10,12 @@ public class LockedDoor : MonoBehaviour
     private bool isPlayerNear = false;
     private AudioSource Audiosource;
     public GameObject Colliders;
+    private Collider Lui;
 
     void Start()
     {
         Audiosource = GetComponent<AudioSource>();
+        Lui = GetComponent<Collider>();
     }
 
     // Détection du joueur
@@ -44,6 +46,7 @@ public class LockedDoor : MonoBehaviour
                // gameObject.SetActive(false); 
             
                 Audiosource.Play();
+                StartCoroutine(Delais());
         
                  
         }
@@ -52,7 +55,8 @@ public class LockedDoor : MonoBehaviour
 
 IEnumerator Delais()
     {
-      yield return new WaitForSeconds(3f);
+      yield return new WaitForSeconds(0.2f);
       Colliders.SetActive(false);
+      Lui.enabled = false;
     }
 }

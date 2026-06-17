@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class CrowbarItem : MonoBehaviour
 {
-   public TankController playerController;
+    public TankController playerController;
     public GameObject currentCCTVCamera; 
     public GameObject minigameCamera; 
     public GameObject armMinigameRoot; 
+    //Audio son pied de biche
     private AudioSource Audiosource;
     public GameObject Crowbar;
     public GameObject Colliders;
+    //Audio d'Olivia
     public AudioSource Audiosources;
 
     void Start()
@@ -61,7 +63,8 @@ public class CrowbarItem : MonoBehaviour
 
     IEnumerator Delais()
     {
-      yield return new WaitForSeconds(3f);
+      //Audiosource.enabled = false;
+      yield return new WaitForSeconds(0.2f);
       Colliders.SetActive(false);
     }
 }
