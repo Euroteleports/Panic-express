@@ -13592,7 +13592,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorToOpen: {fileID: 2942450643417072519}
-  doorToOpens: {fileID: 1668320420069890047}
+  ColliderFin: {fileID: 0}
   clef: {fileID: 919132148083366939}
   collider: {fileID: 1236731104}
 --- !u!82 &1236731106
@@ -14299,6 +14299,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   rotationSpeed: 150
+  SonsDePas:
+  - {fileID: 8300000, guid: 2d1ab33002785004b90a6c16f878f2a9, type: 3}
+  - {fileID: 8300000, guid: 173316566c89e184c8f50d9e098291a6, type: 3}
+  - {fileID: 8300000, guid: 4517d76b109ec134c95d52d7e0ebeeb3, type: 3}
+  - {fileID: 8300000, guid: 0cdcc48c288d652429984923d03eb65f, type: 3}
+  - {fileID: 8300000, guid: 477bd383493684a4ba1c63f12d76a21d, type: 3}
+  - {fileID: 8300000, guid: 44989dbe3bf259b4dafa34cbd9b71bfb, type: 3}
+  - {fileID: 8300000, guid: 2cafe62ce09adcf43b151a0c1e93958e, type: 3}
+  - {fileID: 8300000, guid: a1abc0b84cfbd2c40b276704b656f3ea, type: 3}
+  - {fileID: 8300000, guid: 0d8421e9cdffdda4eb27a2e658e80a4c, type: 3}
+  - {fileID: 8300000, guid: 4f69c0ca0a4c890498598c10eca56c99, type: 3}
+  - {fileID: 8300000, guid: 46985a18b4fafda4a96b16988062b15a, type: 3}
+  - {fileID: 8300000, guid: fc98e02d7303fe5418b8009a172d8759, type: 3}
+  - {fileID: 8300000, guid: 44fe480e6c28e344ab834c37d32d8087, type: 3}
+  - {fileID: 8300000, guid: 78bd4d3cf4002d14db702d629bb90db9, type: 3}
+  - {fileID: 8300000, guid: fd3edee55a319cc4f8a790da16822911, type: 3}
+  - {fileID: 8300000, guid: dfdfa5fad82b6a847b3ce7b0c62876c6, type: 3}
+  - {fileID: 8300000, guid: de77f291d99a9ed4a8e1c5d4843f1958, type: 3}
   animator: {fileID: 1294633182}
 --- !u!143 &1294633180
 CharacterController:

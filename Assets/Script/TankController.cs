@@ -7,6 +7,7 @@ public class TankController : MonoBehaviour
     public float moveSpeed;
     public float rotationSpeed;
     private CharacterController controller;
+    public AudioClip[] SonsDePas;
 
     private AudioSource audioSource;
 
@@ -61,13 +62,22 @@ public class TankController : MonoBehaviour
 
             if (!audioSource.isPlaying)
             {
-                audioSource.Play();
+                //audioSource.Play();
+                SonAleatoires();
             }
         }
         else
         {
             animator.SetBool(walking, false);
             audioSource.Stop();
+        }
+
+        void SonAleatoires()
+        {
+            int IndexAleatoire = Random.Range(0, SonsDePas.Length);
+
+            audioSource.clip = SonsDePas[IndexAleatoire];
+            audioSource.Play();
         }
 
         /*if (horizontalInput != 0)
