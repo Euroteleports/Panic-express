@@ -8,7 +8,8 @@ public class WallSmashTrigger : MonoBehaviour
     public GameObject brokenWall;    // Les débris (optionnel)
     public GameObject enemy;         // Le monstre
     public float enemySpeed = 3f;    // Sa vitesse de course
-    
+    public float startChase = 2f;
+
     private Transform playerTransform;
     private bool isChasing = false;
     public GameObject Camera1;
@@ -64,7 +65,7 @@ public class WallSmashTrigger : MonoBehaviour
     IEnumerator Delais()
     {
         //Commande pour créer un délais
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(startChase);
         // On casse le mur !
             if (solidWall != null) solidWall.SetActive(false);
             if (brokenWall != null) brokenWall.SetActive(true);
