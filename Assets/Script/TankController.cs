@@ -6,16 +6,17 @@ public class TankController : MonoBehaviour
 {
     public float moveSpeed;
     public float rotationSpeed;
-    private CharacterController controller;
     public AudioClip[] SonsDePas;
+    [SerializeField] private Animator animator;
 
+    private CharacterController controller;
     private AudioSource audioSource;
 
     int walking;
     int running;
     int turning;
     float velocity;
-    [SerializeField] private Animator animator;
+   
 
     void Start()
     {
@@ -29,19 +30,21 @@ public class TankController : MonoBehaviour
         velocity = Animator.StringToHash("is velocity");
     }
 
+
     void Update()
     {
         float verticalInput = Input.GetAxis("Vertical");
         float horizontalInput = Input.GetAxis("Horizontal");
 
+
         // Gère la rotation (Gauche / Droite)
         float turn = Input.GetAxis("Horizontal") * rotationSpeed * Time.deltaTime;
         transform.Rotate(0, turn, 0);
 
+
         // Gère l'avancée (Haut / Bas)
         float move = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
 
-        
         
         // Applique le mouvement en prenant en compte la gravité basique
         Vector3 movement = transform.forward * move;
@@ -62,7 +65,6 @@ public class TankController : MonoBehaviour
 
             if (!audioSource.isPlaying)
             {
-                //audioSource.Play();
                 SonAleatoires();
             }
         }
@@ -79,6 +81,12 @@ public class TankController : MonoBehaviour
             audioSource.clip = SonsDePas[IndexAleatoire];
             audioSource.Play();
         }
+
+
+        /*if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            Debug.Log("Shift pressé !");
+        }*/
 
         /*if (horizontalInput != 0)
         {
