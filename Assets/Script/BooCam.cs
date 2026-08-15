@@ -8,7 +8,7 @@ public class BooCam : MonoBehaviour
     private GameObject cameraActive;
     private GameObject[] allCams;
 
-    public bool booVision;
+    public bool booVision = false;
 
 
     void Start()
@@ -25,11 +25,9 @@ public class BooCam : MonoBehaviour
         }
     }
 
+
     void Update()
     {
-
-
-
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             allCams = GameObject.FindGameObjectsWithTag("CCTV");
@@ -48,18 +46,20 @@ public class BooCam : MonoBehaviour
                 camBoo.SetActive(true);
                 booVision = true;
 
-                cameraActive.SetActive(false);
+                Camera cameraComponent = cameraActive.GetComponent<Camera>();
+                cameraComponent.enabled = false;
 
-                Debug.Log("Camera Boo Désactivé !");
+                Debug.Log("Camera Boo Activé !");
             }
             else
             {
                 camBoo.SetActive(false);
                 booVision = false;
 
-                cameraActive.SetActive(true);
+                Camera cameraComponent = cameraActive.GetComponent<Camera>();
+                cameraComponent.enabled = true;
 
-                Debug.Log("Camera Boo Activé !");
+                Debug.Log("Camera Boo Désactivé !");
             }
         }
     }
