@@ -5,29 +5,35 @@ using UnityEngine;
 public class LockedDoor : MonoBehaviour
 {
     [Tooltip("Glisse ici l'obstacle ou la porte à faire disparaître")]
-    public GameObject doorModel; 
+    [SerializeField] private GameObject doorToOpen;
 
     private bool isPlayerNear = false;
-    private AudioSource Audiosource;
-    public GameObject Colliders;
-    private Collider Lui;
+    private AudioSource audioSource;
+
 
     void Start()
     {
-        Audiosource = GetComponent<AudioSource>();
-        Lui = GetComponent<Collider>();
+        audioSource = GetComponent<AudioSource>();
     }
 
-    // Détection du joueur
+
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) isPlayerNear = true;
+        if (other.CompareTag("Player"))
+        {
+            isPlayerNear = true;
+        }
     }
+
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player")) isPlayerNear = false;
+        if (other.CompareTag("Player"))
+        {
+            isPlayerNear = false;
+        }
     }
+
 
     void Update()
     {
@@ -37,26 +43,21 @@ public class LockedDoor : MonoBehaviour
             // On interroge directement la variable statique du pied de biche !
             if (CrowbarItem.hasCrowbar)
             {
+                audioSource.Play();
+
+                doorToOpen.SetActive(false);
+
                 Debug.Log("Porte forcée avec succès !");
-                
-                // On libère le passage (on désactive le modèle pour aller vite)
-                doorModel.SetActive(false);
-                
-                // On désactive ce trigger pour ne plus pouvoir interagir dans le vide
-               // gameObject.SetActive(false); 
-            
-                Audiosource.Play();
+
                 StartCoroutine(Delais());
-        
-                 
+            }
         }
     }
-}
 
-IEnumerator Delais()
+
+    IEnumerator Delais()
     {
-      yield return new WaitForSeconds(0.2f);
-      Colliders.SetActive(false);
-      Lui.enabled = false;
+        yield return new WaitForSeconds(0.25f);
+        Destroy(gameObject);
     }
 }

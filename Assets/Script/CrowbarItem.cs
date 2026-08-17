@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class CrowbarItem : MonoBehaviour
 {
+    public static bool hasCrowbar = false;
+
     [SerializeField] private GameObject olivia;
     [SerializeField] private GameObject currentCCTVCamera;
     [SerializeField] private GameObject minigameCamera;
     [SerializeField] private GameObject armMinigameRoot;
     [SerializeField] private GameObject Crowbar;
-
-    public static bool hasCrowbar = false;
 
     private AudioSource audioSource;
     private BooCam booCam;
@@ -45,7 +45,7 @@ public class CrowbarItem : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isPlayerNear == true)
+        if (isPlayerNear == true && Input.GetKeyDown(KeyCode.Space))
         {
             // L'inventaire est mis à jour !
             hasCrowbar = true;
@@ -69,6 +69,7 @@ public class CrowbarItem : MonoBehaviour
             StartCoroutine(Delais());
         }
     }
+
 
     IEnumerator Delais()
     {

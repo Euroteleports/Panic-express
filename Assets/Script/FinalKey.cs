@@ -4,66 +4,61 @@ using UnityEngine;
 
 public class FinalKey : MonoBehaviour
 {
-    public static bool hasFinalKey = false; 
-    public GameObject doorToOpen; 
-    public GameObject ColliderFin; 
-    public GameObject clef;
-    private AudioSource Audiosource;
-    public GameObject collider;
-    private bool Booestla = false;
+    public static bool hasFinalKey = false;
+
+    [SerializeField] private GameObject doorToOpen;
+    [SerializeField] private GameObject colliderFin;
+    [SerializeField] private GameObject clef;
+
+    private AudioSource audioSource;
+    private bool isPlayerNear = false;
+
 
     void Start()
     {
-        Audiosource = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
+
 
     void OnTriggerEnter(Collider other)
     {
       if(other.CompareTag("Player"))
       {
-        Booestla = true;
+        isPlayerNear = true;
       }   
     }
         
+
     void OnTriggerExit(Collider other)
     {
       if(other.CompareTag("Player"))
       {
-        Booestla = false;
+        isPlayerNear = false;
       }   
     }
         
         
     void Update()
     {
-        if (Booestla == true && Input.GetKeyDown(KeyCode.Space))
+        if (isPlayerNear == true && Input.GetKeyDown(KeyCode.Space))
         {
             hasFinalKey = true;
             Debug.Log("Clef finale récupérée !");
-            
-            // On ouvre la porte (en la désactivant)
-            if (doorToOpen != null)
-            {
-                doorToOpen.SetActive(false);
-            }
 
-            //Destruction des objets qui bloque le chemin
-            doorToOpen.SetActive(false);
-
-            //Activation du collider de fin
-            ColliderFin.SetActive(true);
+            //Son de clef
+            audioSource.Play();
 
             //Destrcution de la clef
             Destroy(clef);
 
-            // Son de clef
-             Audiosource.Play();
-             
+            //Desactivation des objets qui bloque le chemin
+            doorToOpen.SetActive(false);
+
+            //Activation du collider de fin
+            colliderFin.SetActive(true);
+
             //Temps d'attende avant l'autodestruction
-            StartCoroutine(Autodestruction());
-            
-            
-            
+            StartCoroutine(Autodestruction());    
         }
     }
     
@@ -71,9 +66,9 @@ public class FinalKey : MonoBehaviour
     IEnumerator Autodestruction()
     {
         //Commande pour créer un délais
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(0.5f);
         //Destruction du collider
-        collider.SetActive(false);
+        Destroy(gameObject);
         
     }
 }
