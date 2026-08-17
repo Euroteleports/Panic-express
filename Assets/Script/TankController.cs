@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TankController : MonoBehaviour
 {
+    public bool stopPlayer = false;
     public float moveSpeed;
     public float rotationSpeed;
     public AudioClip[] SonsDePas;
@@ -16,7 +17,7 @@ public class TankController : MonoBehaviour
     int running;
     int turning;
     float velocity;
-   
+
 
     void Start()
     {
@@ -33,78 +34,80 @@ public class TankController : MonoBehaviour
 
     void Update()
     {
-        float verticalInput = Input.GetAxis("Vertical");
-        float horizontalInput = Input.GetAxis("Horizontal");
+        if (stopPlayer == false)
+        {
+            float verticalInput = Input.GetAxis("Vertical");
+            float horizontalInput = Input.GetAxis("Horizontal");
 
 
-        // Gère la rotation (Gauche / Droite)
-        float turn = Input.GetAxis("Horizontal") * rotationSpeed * Time.deltaTime;
-        transform.Rotate(0, turn, 0);
+            // Gère la rotation (Gauche / Droite)
+            float turn = Input.GetAxis("Horizontal") * rotationSpeed * Time.deltaTime;
+            transform.Rotate(0, turn, 0);
 
 
-        // Gère l'avancée (Haut / Bas)
-        float move = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
+            // Gère l'avancée (Haut / Bas)
+            float move = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
 
         
-        // Applique le mouvement en prenant en compte la gravité basique
-        Vector3 movement = transform.forward * move;
-        movement.y -= 9.81f * Time.deltaTime; 
+            // Applique le mouvement en prenant en compte la gravité basique
+            Vector3 movement = transform.forward * move;
+            movement.y -= 9.81f * Time.deltaTime; 
 
 
-        controller.Move(movement);
+            controller.Move(movement);
 
 
-        if (verticalInput != 0)
-        {
+            if (verticalInput != 0)
+            {
            
-            if (animator != null)
+                if (animator != null)
+                {
+                    animator.speed = 1.5f;
+                    animator.SetBool(walking, true);
+                }
+
+                if (!audioSource.isPlaying)
+                {
+                    SonAleatoires();
+                }
+            }
+            else
             {
-                animator.speed = 1.5f;
-                animator.SetBool(walking, true);
+                animator.SetBool(walking, false);
+                audioSource.Stop();
             }
 
-            if (!audioSource.isPlaying)
+            /*if (Input.GetKeyDown(KeyCode.LeftShift))
             {
-                SonAleatoires();
-            }
-        }
-        else
-        {
-            animator.SetBool(walking, false);
-            audioSource.Stop();
-        }
+                Debug.Log("Shift pressé !");
+            }*/
 
-        void SonAleatoires()
-        {
-            int IndexAleatoire = Random.Range(0, SonsDePas.Length);
-
-            audioSource.clip = SonsDePas[IndexAleatoire];
-            audioSource.Play();
-        }
-
-
-        /*if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            Debug.Log("Shift pressé !");
-        }*/
-
-        /*if (horizontalInput != 0)
-        {
-            Debug.Log("Turning");
-            if (animator != null)
+            /*if (horizontalInput != 0)
             {
-                animator.SetBool(turning, true);
-            }
+                Debug.Log("Turning");
+                if (animator != null)
+                {
+                    animator.SetBool(turning, true);
+                }
 
-            if (!audioSource.isPlaying)
-            {
-                audioSource.Play();
+                if (!audioSource.isPlaying)
+                {
+                    audioSource.Play();
+                }
             }
+            else
+            {
+                animator.SetBool(turning, false);
+                audioSource.Stop();
+            }*/
         }
-        else
-        {
-            animator.SetBool(turning, false);
-            audioSource.Stop();
-        }*/
+    }
+
+    void SonAleatoires()
+    {
+        int IndexAleatoire = Random.Range(0, SonsDePas.Length);
+
+        audioSource.clip = SonsDePas[IndexAleatoire];
+        audioSource.Play();
     }
 }

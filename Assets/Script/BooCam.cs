@@ -9,45 +9,64 @@ public class BooCam : MonoBehaviour
     [SerializeField] private GameObject decorOnlyBoo;
     private GameObject cameraActive;
 
+    public bool booVisionActive = false;
+    public bool noBooVision = false;
+
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && noBooVision == false)
         {
             if (!camBoo.activeSelf)
             {
-                camBoo.SetActive(true);
-
-                decorOnlyBoo.SetActive(true);
-
-                foreach (GameObject cam in allCams)
-                {
-                    Camera cameraComponent = cam.GetComponent<Camera>();
-                    cameraComponent.enabled = false;
-
-                    AudioListener audioComponent = cam.GetComponent<AudioListener>();
-                    audioComponent.enabled = false;
-                }
-
-                Debug.Log("Camera Boo Activé !");
+                ActivateBooVision();
             }
             else
             {
-                camBoo.SetActive(false);
-
-                decorOnlyBoo.SetActive(false);
-
-                foreach (GameObject cam in allCams)
-                {
-                    Camera cameraComponent = cam.GetComponent<Camera>();
-                    cameraComponent.enabled = true;
-
-                    AudioListener audioComponent = cam.GetComponent<AudioListener>();
-                    audioComponent.enabled = true;
-                }
-
-                Debug.Log("Camera Boo Désactivé !");
+                DeactivateBooVision();
             }
         }
+    }
+
+
+    public void ActivateBooVision()
+    {
+        booVisionActive = true;
+
+        camBoo.SetActive(true);
+
+        decorOnlyBoo.SetActive(true);
+
+        foreach (GameObject cam in allCams)
+        {
+            Camera cameraComponent = cam.GetComponent<Camera>();
+            cameraComponent.enabled = false;
+
+            AudioListener audioComponent = cam.GetComponent<AudioListener>();
+            audioComponent.enabled = false;
+        }
+
+        Debug.Log("Camera Boo Activé !");
+    }
+
+
+    public void DeactivateBooVision()
+    {
+        booVisionActive = false;
+
+        camBoo.SetActive(false);
+
+        decorOnlyBoo.SetActive(false);
+
+        foreach (GameObject cam in allCams)
+        {
+            Camera cameraComponent = cam.GetComponent<Camera>();
+            cameraComponent.enabled = true;
+
+            AudioListener audioComponent = cam.GetComponent<AudioListener>();
+            audioComponent.enabled = true;
+        }
+
+        Debug.Log("Camera Boo Désactivé !");
     }
 }

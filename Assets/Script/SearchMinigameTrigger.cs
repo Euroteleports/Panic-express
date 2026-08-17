@@ -4,46 +4,68 @@ using UnityEngine;
 
 public class SearchMinigameTrigger : MonoBehaviour
 {
-   public TankController playerController;
-    public GameObject currentCCTVCamera;
-    public GameObject minigameCamera;
-    public GameObject armMinigameRoot;
-    public AudioSource Audiosource;
+    [SerializeField] private GameObject currentCCTVCamera;
+    [SerializeField] private GameObject minigameCamera;
 
     private bool isPlayerNear = false;
+    private GameObject[] allCams;
+    private GameObject cameraActive;
+    private BooCam booCam;
+    private GameObject olivia;
+
 
     void OnTriggerEnter(Collider other)
     {
-
-        
         if (other.CompareTag("Player"))
         {
             isPlayerNear = true;
-          
+
+            booCam = other.GetComponent<BooCam>();
+
+            olivia = other.gameObject;
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player")) isPlayerNear = false;
+        if (other.CompareTag("Player"))
+        {
+            isPlayerNear = false;
+        }
     }
+
 
     void Update()
     {
-        if (isPlayerNear)
+        if (Input.GetKeyDown(KeyCode.Space) && isPlayerNear == true)
         {
-         
-            
-            if (Input.GetKeyDown(KeyCode.Space))
+            isPlayerNear = false;
+
+            if (booCam.booVisionActive == true)
             {
-             //moment où l'on active la camréca (celle qui filme la main) et qu'on active le bras
-                playerController.enabled = false; 
-                currentCCTVCamera.SetActive(false);
-                minigameCamera.SetActive(true);
-                armMinigameRoot.SetActive(true);
-                gameObject.SetActive(false);
-                Audiosource.enabled = false;
+                booCam.DeactivateBooVision();
+                Debug.Log("BooVision est active !");
             }
+
+            booCam.noBooVision = true;
+
+            allCams = GameObject.FindGameObjectsWithTag("CCTV");
+
+            foreach (GameObject cam in allCams)
+            {
+                if (cam.activeSelf)
+                {
+                    cameraActive = cam;
+                }
+
+                Debug.Log(cameraActive.name + " est active !");
+            }
+
+            olivia.SetActive(false);
+            cameraActive.SetActive(false);
+            minigameCamera.SetActive(true);
+
+            Destroy(gameObject);
         }
     }
 }

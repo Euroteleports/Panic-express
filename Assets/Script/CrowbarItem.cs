@@ -4,44 +4,55 @@ using UnityEngine;
 
 public class CrowbarItem : MonoBehaviour
 {
-    public TankController playerController;
-    public GameObject currentCCTVCamera; 
-    public GameObject minigameCamera; 
-    public GameObject armMinigameRoot; 
-    //Audio son pied de biche
-    private AudioSource Audiosource;
-    public GameObject Crowbar;
-    public GameObject Colliders;
-    //Audio d'Olivia
-    public AudioSource Audiosources;
+    [SerializeField] private GameObject olivia;
+    [SerializeField] private GameObject currentCCTVCamera;
+    [SerializeField] private GameObject minigameCamera;
+    [SerializeField] private GameObject armMinigameRoot;
+    [SerializeField] private GameObject Crowbar;
+
+    public static bool hasCrowbar = false;
+
+    private AudioSource audioSource;
+    private BooCam booCam;
+    private bool isPlayerNear = false;
+
 
     void Start()
     {
-        Audiosource = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
+
+        booCam = olivia.GetComponent<BooCam>();
     }
+    
 
-    // Ta variable statique globale
-    public static bool hasCrowbar = false; 
-    private bool isPlayerNear = false;
-
-        void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Hand")) isPlayerNear = true;
+        if (other.CompareTag("Hand"))
+        {
+            isPlayerNear = true;
+        }
     }
 
-     void OnTriggerExit(Collider other)
+
+    void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Hand")) isPlayerNear = false;
+        if (other.CompareTag("Hand"))
+        {
+            isPlayerNear = false;
+        }
     }
+
 
     void Update()
     {
-        // On vérifie que c'est bien la main qui touche
-        if (/*other.CompareTag("Hand") &&*/ Input.GetKeyDown(KeyCode.Space) && isPlayerNear == true)
+        if (Input.GetKeyDown(KeyCode.Space) && isPlayerNear == true)
         {
-            hasCrowbar = true; // L'inventaire est mis à jour !
+            // L'inventaire est mis à jour !
+            hasCrowbar = true;
             Debug.Log("Pied de biche récupéré !");
 
+            // On joue le son de la récupération du pied de biche
+            audioSource.Play();
 
             // On ferme le mini-jeu
             minigameCamera.SetActive(false);
@@ -49,22 +60,20 @@ public class CrowbarItem : MonoBehaviour
             
             // On libère le joueur
             currentCCTVCamera.SetActive(true);
-            playerController.enabled = true;
-            Audiosources.enabled = true;
+            olivia.SetActive(true);
 
-            // On détruit l'objet physique
-            //Destroy(gameObject);
-            Crowbar.SetActive(false);
-            
-            Audiosource.Play();
+            // On redonne la possibilité de BooVision
+            booCam.noBooVision = false;
+
+            // On commence le decompte avant l'autodestruction
             StartCoroutine(Delais());
         }
     }
 
     IEnumerator Delais()
     {
-      //Audiosource.enabled = false;
-      yield return new WaitForSeconds(0.2f);
-      Colliders.SetActive(false);
+        yield return new WaitForSeconds(0.23f);
+        Destroy(Crowbar);
+        Destroy(gameObject);
     }
 }
