@@ -8,6 +8,13 @@ public class ButtonAnimation : MonoBehaviour, IPointerEnterHandler, IPointerExit
     [SerializeField] private MenuController controller;
     [SerializeField] private bool isPlayButton;
 
+    private AudioSource audioSource;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (isPlayButton)
@@ -18,6 +25,8 @@ public class ButtonAnimation : MonoBehaviour, IPointerEnterHandler, IPointerExit
         {
             controller.QuitHover();
         }
+
+        audioSource.Play();
     }
 
     public void OnPointerExit(PointerEventData eventData)
