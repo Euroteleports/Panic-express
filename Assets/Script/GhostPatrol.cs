@@ -5,19 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class GhostPatrol : MonoBehaviour
 {
+    // Variable statique pour la peur
+    public static float currentFear = 0f;
+
     [Header("Déplacements")]
     [Tooltip("Glisse ici tes points de patrouille (Empty GameObjects)")]
-    public Transform[] waypoints;
-    public float moveSpeed = 2f;
-    private int currentWaypointIndex = 0;
-
+    [SerializeField] private Transform[] waypoints;
+    [SerializeField] private float moveSpeed = 2f;
     [Header("Mécanique de Peur")]
     [Tooltip("Vitesse à laquelle la jauge monte par seconde")]
-    public float fearIncreaseRate = 25f; 
-    
-    // Variable statique pour la peur
-    public static float currentFear = 0f; 
-    private bool isPlayerInAura = false;
+    [SerializeField] private float fearIncreaseRate = 25f;
+
+    private int currentWaypointIndex = 0;
+    private bool isPlayerNear = false;
+
 
     void Start()
     {
@@ -26,16 +27,21 @@ public class GhostPatrol : MonoBehaviour
         Time.timeScale = 1f;
     }
 
+
     void Update()
     {
         Patrol();
         HandleFear();
     }
 
+
     void Patrol()
     {
         // S'il n'y a pas de points assignés, il reste sur place
-        if (waypoints.Length == 0) return; 
+        if (waypoints.Length == 0)
+        {
+            return;
+        }
 
         Transform target = waypoints[currentWaypointIndex];
         
@@ -53,9 +59,10 @@ public class GhostPatrol : MonoBehaviour
         }
     }
 
+
     void HandleFear()
     {
-        if (isPlayerInAura)
+        if (isPlayerNear)
         {
             // La peur augmente progressivement
             currentFear += fearIncreaseRate * Time.deltaTime;
@@ -70,24 +77,33 @@ public class GhostPatrol : MonoBehaviour
         else if (currentFear > 0)
         {
             // Optionnel : la peur redescend doucement quand on sort de la zone
-            currentFear -= (fearIncreaseRate / 2) * Time.deltaTime;
+            currentFear -= (fearIncreaseRate / 3) * Time.deltaTime;
             currentFear = Mathf.Clamp(currentFear, 0f, 100f);
         }
     }
 
+
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) isPlayerInAura = true;
+        if (other.CompareTag("Player"))
+        {
+            isPlayerNear = true;
+        }
     }
+
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player")) isPlayerInAura = false;
+        if (other.CompareTag("Player"))
+        {
+            isPlayerNear = false;
+        }
     }
+
 
     void RestartGame()
     {
         // On recharge la scène actuelle depuis le début
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(1);
     }
 }

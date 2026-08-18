@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class FearBarUI : MonoBehaviour
 {
     [Tooltip("Glisse ici l'image de ta barre de peur (celle réglée sur Filled)")]
-    public Image fillImage;
+    [SerializeField] private Image fillImage;
 
     void Update()
     {
