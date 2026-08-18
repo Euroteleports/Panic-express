@@ -5,16 +5,30 @@ using UnityEngine.EventSystems;
 
 public class ButtonAnimation : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] private Animator animator;
+    [SerializeField] private MenuController controller;
+    [SerializeField] private bool isPlayButton;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        animator.SetTrigger("Premier");
-        animator.ResetTrigger("Repli");
+        if (isPlayButton)
+        {
+            controller.PlayHover();
+        }
+        else
+        {
+            controller.QuitHover();
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        animator.SetTrigger("Repli");
+        if (isPlayButton)
+        {
+            controller.PlayExit();
+        }
+        else
+        {
+            controller.QuitExit();
+        }
     }
 }
