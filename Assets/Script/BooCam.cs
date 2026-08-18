@@ -4,13 +4,25 @@ using UnityEngine;
 
 public class BooCam : MonoBehaviour
 {
+    public bool booVisionActive = false;
+    public bool noBooVision = false;
+
     [SerializeField] private GameObject[] allCams;
     [SerializeField] private GameObject camBoo;
     [SerializeField] private GameObject decorOnlyBoo;
+
+    private GameObject[] allBooEnemys;
     private GameObject cameraActive;
 
-    public bool booVisionActive = false;
-    public bool noBooVision = false;
+
+    void Start()
+    {
+        allBooEnemys = GameObject.FindGameObjectsWithTag("BooEnemy");
+        foreach (GameObject enemy in allBooEnemys)
+        {
+            enemy.SetActive(false);
+        }
+    }
 
 
     void Update()
@@ -37,6 +49,11 @@ public class BooCam : MonoBehaviour
 
         decorOnlyBoo.SetActive(true);
 
+        foreach (GameObject enemy in allBooEnemys)
+        {
+            enemy.SetActive(true);
+        }
+
         foreach (GameObject cam in allCams)
         {
             Camera cameraComponent = cam.GetComponent<Camera>();
@@ -57,6 +74,11 @@ public class BooCam : MonoBehaviour
         camBoo.SetActive(false);
 
         decorOnlyBoo.SetActive(false);
+
+        foreach (GameObject enemy in allBooEnemys)
+        {
+            enemy.SetActive(false);
+        }
 
         foreach (GameObject cam in allCams)
         {

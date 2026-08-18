@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CCTV
   - Hand
+  - BooEnemy
   layers:
   - Default
   - TransparentFX
