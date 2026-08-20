@@ -15,6 +15,7 @@ public class GhostPatrol : MonoBehaviour
     [Header("Mécanique de Peur")]
     [Tooltip("Vitesse à laquelle la jauge monte par seconde")]
     [SerializeField] private float fearIncreaseRate = 25f;
+    [SerializeField] private GameObject deathScreen;
 
     private int currentWaypointIndex = 0;
     private bool isPlayerNear = false;
@@ -71,7 +72,8 @@ public class GhostPatrol : MonoBehaviour
             if (currentFear >= 100f)
             {
                 Debug.Log("MORT DE PEUR ! On recommence.");
-                RestartGame();
+                Time.timeScale = 0f;
+                deathScreen.SetActive(true);
             }
         }
         else if (currentFear > 0)
@@ -98,12 +100,5 @@ public class GhostPatrol : MonoBehaviour
         {
             isPlayerNear = false;
         }
-    }
-
-
-    void RestartGame()
-    {
-        // On recharge la scène actuelle depuis le début
-        SceneManager.LoadScene(1);
     }
 }

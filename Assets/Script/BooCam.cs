@@ -10,6 +10,8 @@ public class BooCam : MonoBehaviour
     [SerializeField] private GameObject[] allCams;
     [SerializeField] private GameObject camBoo;
     [SerializeField] private GameObject decorOnlyBoo;
+    [SerializeField] private GameObject fearBar;
+    [SerializeField] private GameObject effetBooVision;
 
     private GameObject[] allBooEnemys;
     private GameObject cameraActive;
@@ -45,9 +47,13 @@ public class BooCam : MonoBehaviour
     {
         booVisionActive = true;
 
-        camBoo.SetActive(true);
+        fearBar.SetActive(false);
+
+        effetBooVision.SetActive(true);
 
         decorOnlyBoo.SetActive(true);
+
+        camBoo.SetActive(true);
 
         foreach (GameObject enemy in allBooEnemys)
         {
@@ -71,9 +77,13 @@ public class BooCam : MonoBehaviour
     {
         booVisionActive = false;
 
-        camBoo.SetActive(false);
+        fearBar.SetActive(true);
+
+        effetBooVision.SetActive(false);
 
         decorOnlyBoo.SetActive(false);
+
+        camBoo.SetActive(false);
 
         foreach (GameObject enemy in allBooEnemys)
         {

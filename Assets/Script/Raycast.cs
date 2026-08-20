@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Raycast : MonoBehaviour
 {
-private Ray _ray;
+    private Ray _ray;
     private RaycastHit _hit;
     public Transform Cam;
     private bool estVu = false;

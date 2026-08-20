@@ -13,6 +13,8 @@ public class ButtonAnimation : MonoBehaviour, IPointerEnterHandler, IPointerExit
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+
+        Time.timeScale = 1f;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
