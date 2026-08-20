@@ -16,7 +16,7 @@ public class FearBarUI : MonoBehaviour
             // La variable currentFear va de 0 à 100
             // Le fillAmount de l'image attend une valeur entre 0 et 1
             // On divise donc simplement par 100 pour convertir !
-            fillImage.fillAmount = GhostPatrol.currentFear / 100f;
+            fillImage.fillAmount = FearController.currentFear / 100f;
         }
     }
 }

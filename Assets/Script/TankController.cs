@@ -7,16 +7,16 @@ public class TankController : MonoBehaviour
     public bool stopPlayer = false;
     public float moveSpeed;
     public float rotationSpeed;
-    public AudioClip[] SonsDePas;
+
+    [SerializeField] private AudioClip[] sonsDePas;
     [SerializeField] private Animator animator;
 
     private CharacterController controller;
     private AudioSource audioSource;
-
-    int walking;
-    int running;
-    int turning;
-    float velocity;
+    private int walking;
+    private int running;
+    private int turning;
+    private float velocity;
 
 
     void Start()
@@ -105,9 +105,9 @@ public class TankController : MonoBehaviour
 
     void SonAleatoires()
     {
-        int IndexAleatoire = Random.Range(0, SonsDePas.Length);
+        int IndexAleatoire = Random.Range(0, sonsDePas.Length);
 
-        audioSource.clip = SonsDePas[IndexAleatoire];
+        audioSource.clip = sonsDePas[IndexAleatoire];
         audioSource.Play();
     }
 }
