@@ -59,7 +59,7 @@ public class FearController : MonoBehaviour
         }
         else if (isPlayerInFearBig == true)
         {
-            // La peur augmente progressivement
+            // La peur augmente plus vite 
             currentFear += fearBigIncreaseRate * Time.deltaTime;
             Debug.Log("Peur : " + Mathf.Round(currentFear) + "%");
 
@@ -70,7 +70,7 @@ public class FearController : MonoBehaviour
         }
         else if (currentFear > 0)
         {
-            // Optionnel : la peur redescend doucement quand on sort de la zone
+            // La peur redescend doucement quand on sort de la zone
             currentFear -= (fearSmallIncreaseRate / fearDecreaseRate) * Time.deltaTime;
             currentFear = Mathf.Clamp(currentFear, 0f, 100f);
         }
