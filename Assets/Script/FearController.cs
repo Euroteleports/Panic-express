@@ -12,8 +12,10 @@ public class FearController : MonoBehaviour
     [SerializeField] private GameObject deathScreen;
     [SerializeField] private AudioClip[] babySoundFear;
 
+    [SerializeField] private BooCam booCam;
     [Header("Mécanique de Peur")]
     [Tooltip("Vitesse à laquelle la jauge monte par seconde")]
+    [SerializeField] private float fearBooVisionIncreaseRate = 15f;
     [SerializeField] private float fearSmallIncreaseRate = 20f;
     [SerializeField] private float fearBigIncreaseRate = 50f;
     [SerializeField] private float fearDecreaseRate = 3.5f;
@@ -46,6 +48,18 @@ public class FearController : MonoBehaviour
 
     void HandleFear()
     {
+        if (booCam.booVisionActive == true)
+        {
+            // La peur augmente progressivement
+            currentFear += fearBooVisionIncreaseRate * Time.deltaTime;
+            Debug.Log("Peur : " + Mathf.Round(currentFear) + "%");
+
+            if (currentFear >= 100f)
+            {
+                DeathByFear();
+            }
+        }
+
         if (isPlayerInFearSmall == true)
         {
             // La peur augmente progressivement
@@ -57,7 +71,8 @@ public class FearController : MonoBehaviour
                 DeathByFear();
             }
         }
-        else if (isPlayerInFearBig == true)
+        
+        if (isPlayerInFearBig == true)
         {
             // La peur augmente plus vite 
             currentFear += fearBigIncreaseRate * Time.deltaTime;
@@ -68,7 +83,8 @@ public class FearController : MonoBehaviour
                 DeathByFear();
             }
         }
-        else if (currentFear > 0)
+        
+        if (currentFear > 0)
         {
             // La peur redescend doucement quand on sort de la zone
             currentFear -= (fearSmallIncreaseRate / fearDecreaseRate) * Time.deltaTime;

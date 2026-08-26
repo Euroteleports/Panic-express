@@ -37,7 +37,7 @@ public class SearchMinigameTrigger : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isPlayerNear == true)
+        if (Input.GetKeyDown(KeyCode.Space) && isPlayerNear == true && booCam.booVisionActive == false)
         {
             isPlayerNear = false;
 

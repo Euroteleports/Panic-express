@@ -9,6 +9,7 @@ public class LockedDoor : MonoBehaviour
 
     private bool isPlayerNear = false;
     private AudioSource audioSource;
+    private BooCam booCam;
 
 
     void Start()
@@ -22,6 +23,8 @@ public class LockedDoor : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerNear = true;
+
+            booCam = other.GetComponent<BooCam>();
         }
     }
 
@@ -38,7 +41,7 @@ public class LockedDoor : MonoBehaviour
     void Update()
     {
         // Si le joueur est devant et appuie sur Espace
-        if (isPlayerNear && Input.GetKeyDown(KeyCode.Space))
+        if (isPlayerNear && Input.GetKeyDown(KeyCode.Space) && booCam.booVisionActive == false)
         {
             // On interroge directement la variable statique du pied de biche !
             if (CrowbarItem.hasCrowbar)
