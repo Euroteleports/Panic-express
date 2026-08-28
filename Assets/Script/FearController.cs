@@ -56,7 +56,7 @@ public class FearController : MonoBehaviour
 
             if (currentFear >= 100f)
             {
-              //  DeathByFear();
+                DeathByFear();
             }
         }
 
@@ -68,7 +68,7 @@ public class FearController : MonoBehaviour
 
             if (currentFear >= 100f)
             {
-               // DeathByFear();
+                DeathByFear();
             }
         }
         
@@ -80,7 +80,7 @@ public class FearController : MonoBehaviour
 
             if (currentFear >= 100f)
             {
-              // DeathByFear();
+               DeathByFear();
             }
         }
         

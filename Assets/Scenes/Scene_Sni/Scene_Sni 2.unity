@@ -35397,7 +35397,7 @@ GameObject:
   - component: {fileID: 754245256}
   - component: {fileID: 754245255}
   m_Layer: 0
-  m_Name: ENEMYS
+  m_Name: ENNEMIS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41629,7 +41629,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dadcb317b0604af4ba9fa5d405f1aeac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorToOpen: {fileID: 7357708647759499251}
+  doorToOpen: {fileID: 6813643764955758843}
+  Crowbar2: {fileID: 1447760641}
 --- !u!65 &781176073
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -42191,6 +42192,7 @@ GameObject:
   - component: {fileID: 794740931}
   - component: {fileID: 794740935}
   - component: {fileID: 794740936}
+  - component: {fileID: 794740937}
   m_Layer: 0
   m_Name: OLIVIA
   m_TagString: Player
@@ -42407,7 +42409,7 @@ Transform:
   m_GameObject: {fileID: 794740926}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.5, y: 1.5, z: 2.753}
+  m_LocalPosition: {x: 8.5, y: 1.5, z: 1.054}
   m_LocalScale: {x: 1, y: 1.35, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -42452,6 +42454,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cam: {fileID: 1078534490}
+--- !u!95 &794740937
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794740926}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &796110206
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -91552,8 +91575,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.4, y: 0.2, z: 2.6}
-  m_Center: {x: -0.7, y: 0, z: 1.3}
+  m_Size: {x: 1.4, y: 0.020004272, z: 2.6}
+  m_Center: {x: -0.7, y: 0.033514023, z: 1.3}
 --- !u!4 &6844866171075588204
 Transform:
   m_ObjectHideFlags: 0
