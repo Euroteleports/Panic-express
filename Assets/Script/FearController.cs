@@ -13,8 +13,8 @@ public class FearController : MonoBehaviour
     [SerializeField] private AudioClip[] babySoundFear;
 
     [SerializeField] private BooCam booCam;
-    [Header("Mécanique de Peur")]
-    [Tooltip("Vitesse à laquelle la jauge monte par seconde")]
+    [Header("Mï¿½canique de Peur")]
+    [Tooltip("Vitesse ï¿½ laquelle la jauge monte par seconde")]
     [SerializeField] private float fearBooVisionIncreaseRate = 15f;
     [SerializeField] private float fearSmallIncreaseRate = 20f;
     [SerializeField] private float fearBigIncreaseRate = 50f;
@@ -29,7 +29,7 @@ public class FearController : MonoBehaviour
 
     void Start()
     {
-        // Sécurité : On remet la peur à zéro et le temps à la normale au chargement
+        // Sï¿½curitï¿½ : On remet la peur ï¿½ zï¿½ro et le temps ï¿½ la normale au chargement
         currentFear = 0f;
         Time.timeScale = 1f;
         audioSource = GetComponent<AudioSource>();
@@ -56,7 +56,7 @@ public class FearController : MonoBehaviour
 
             if (currentFear >= 100f)
             {
-                DeathByFear();
+              //  DeathByFear();
             }
         }
 
@@ -68,7 +68,7 @@ public class FearController : MonoBehaviour
 
             if (currentFear >= 100f)
             {
-                DeathByFear();
+               // DeathByFear();
             }
         }
         
@@ -80,7 +80,7 @@ public class FearController : MonoBehaviour
 
             if (currentFear >= 100f)
             {
-                DeathByFear();
+              // DeathByFear();
             }
         }
         

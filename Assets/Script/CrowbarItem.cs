@@ -11,6 +11,7 @@ public class CrowbarItem : MonoBehaviour
     [SerializeField] private GameObject minigameCamera;
     [SerializeField] private GameObject armMinigameRoot;
     [SerializeField] private GameObject Crowbar;
+    [SerializeField] private GameObject Crowbar2;
 
     private AudioSource audioSource;
     private BooCam booCam;
@@ -64,6 +65,7 @@ public class CrowbarItem : MonoBehaviour
 
             // On redonne la possibilité de BooVision
             booCam.noBooVision = false;
+            Crowbar2.SetActive(true);
 
             // On commence le decompte avant l'autodestruction
             StartCoroutine(Delais());

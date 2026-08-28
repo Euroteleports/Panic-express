@@ -10,6 +10,7 @@ public class LockedDoor : MonoBehaviour
     private bool isPlayerNear = false;
     private AudioSource audioSource;
     private BooCam booCam;
+    [SerializeField] private GameObject Crowbar2;
 
 
     void Start()
@@ -48,10 +49,12 @@ public class LockedDoor : MonoBehaviour
             {
                 audioSource.Play();
 
-                doorToOpen.SetActive(false);
+                //doorToOpen.SetActive(false);
 
                 Debug.Log("Porte forcée avec succès !");
+                Crowbar2.SetActive(false);
 
+                doorToOpen.transform.Rotate(89f, 0f, 0f);
                 StartCoroutine(Delais());
             }
         }
